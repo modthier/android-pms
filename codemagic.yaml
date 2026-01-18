@@ -7,10 +7,12 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     environment:
-      android_signing:
-        - keystore_reference  # Configure in CodeMagic UI: Settings > Android > Keystore
-      groups:
-        - keystore_credentials  # Add your keystore credentials as environment variables
+      # Uncomment and configure after setting up keystore in CodeMagic UI:
+      # Go to Settings > Android > Keystore to upload your keystore file
+      # android_signing:
+      #   - keystore_reference
+      # groups:
+      #   - keystore_credentials
       vars:
         PACKAGE_NAME: "com.pharmacy.pms"
     scripts:
