@@ -27,13 +27,8 @@ workflows:
         script: |
           cd $CM_BUILD_DIR
           ./gradlew clean assembleRelease
-      - name: Build release AAB (Android App Bundle)
-        script: |
-          cd $CM_BUILD_DIR
-          ./gradlew clean bundleRelease
     artifacts:
-      - app/build/outputs/**/*.apk
-      - app/build/outputs/**/*.aab
+      - app/build/outputs/apk/release/*.apk
     publishing:
       email:
         recipients:
