@@ -15,6 +15,7 @@ import com.pharmacy.pms.data.local.TokenManager
 import com.pharmacy.pms.data.repository.DrugRepository
 import com.pharmacy.pms.ui.viewmodel.DrugViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DrugsScreen() {
     val context = LocalContext.current
@@ -111,7 +112,7 @@ fun DrugsScreen() {
                 }
             }
             
-            if (uiState.errorMessage != null) {
+            uiState.errorMessage?.let { error ->
                 Snackbar(
                     action = {
                         TextButton(onClick = { viewModel.clearError() }) {
@@ -120,7 +121,7 @@ fun DrugsScreen() {
                     },
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Text(uiState.errorMessage)
+                    Text(error)
                 }
             }
         }

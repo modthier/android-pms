@@ -77,9 +77,9 @@ fun LoginScreen(
             singleLine = true
         )
         
-        if (uiState.errorMessage != null) {
+        uiState.errorMessage?.let { error ->
             Text(
-                text = uiState.errorMessage,
+                text = error,
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.padding(bottom = 16.dp)
             )

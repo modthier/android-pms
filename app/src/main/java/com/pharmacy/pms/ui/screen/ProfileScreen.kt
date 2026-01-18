@@ -13,6 +13,7 @@ import com.pharmacy.pms.data.repository.AuthRepository
 import com.pharmacy.pms.ui.navigation.Screen
 import com.pharmacy.pms.ui.viewmodel.AuthViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
     navController: NavController
@@ -54,7 +55,7 @@ fun ProfileScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            if (uiState.userEmail != null) {
+            uiState.userEmail?.let { email ->
                 Card(
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -66,7 +67,7 @@ fun ProfileScreen(
                             style = MaterialTheme.typography.titleMedium
                         )
                         Text(
-                            text = uiState.userEmail,
+                            text = email,
                             style = MaterialTheme.typography.bodyLarge
                         )
                     }

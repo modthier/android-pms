@@ -13,6 +13,7 @@ import com.pharmacy.pms.data.local.TokenManager
 import com.pharmacy.pms.data.repository.StockRepository
 import com.pharmacy.pms.ui.viewmodel.StockViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StockScreen() {
     val context = LocalContext.current
@@ -106,7 +107,7 @@ fun StockScreen() {
                 }
             }
             
-            if (uiState.errorMessage != null) {
+            uiState.errorMessage?.let { error ->
                 Snackbar(
                     action = {
                         TextButton(onClick = { viewModel.clearError() }) {
@@ -115,7 +116,7 @@ fun StockScreen() {
                     },
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    Text(uiState.errorMessage)
+                    Text(error)
                 }
             }
         }
