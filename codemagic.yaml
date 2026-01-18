@@ -19,6 +19,10 @@ workflows:
       - name: Set up local.properties
         script: |
           echo "sdk.dir=$HOME/Library/Android/sdk" > $CM_BUILD_DIR/local.properties
+      - name: Make gradlew executable
+        script: |
+          cd $CM_BUILD_DIR
+          chmod +x gradlew
       - name: Build release APK
         script: |
           cd $CM_BUILD_DIR
@@ -57,6 +61,10 @@ workflows:
       - name: Set up local.properties
         script: |
           echo "sdk.dir=$HOME/Library/Android/sdk" > $CM_BUILD_DIR/local.properties
+      - name: Make gradlew executable
+        script: |
+          cd $CM_BUILD_DIR
+          chmod +x gradlew
       - name: Build debug APK
         script: |
           cd $CM_BUILD_DIR
@@ -88,6 +96,10 @@ workflows:
       - name: Set up local.properties
         script: |
           echo "sdk.dir=$HOME/Library/Android/sdk" > $CM_BUILD_DIR/local.properties
+      - name: Make gradlew executable
+        script: |
+          cd $CM_BUILD_DIR
+          chmod +x gradlew
       - name: Build QA APK
         script: |
           cd $CM_BUILD_DIR
